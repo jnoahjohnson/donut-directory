@@ -16,9 +16,6 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
-  "devDependencies": {
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
-  },
   "scripts": {
     "start": "craco start",
     "build": "craco build",
