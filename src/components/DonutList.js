@@ -122,26 +122,25 @@ const categories = ["all", "iced", "glazed", "filled", "cake", "chocolate"];
 
 export default function DonutList() {
   const [allDonuts, setAllDonuts] = useState([]);
-  const [currentDonuts, setCurrentDonuts] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("all");
 
-  const setCategory = (category) => {
-    setCurrentCategory(category);
+  // const setCategory = (category) => {
+  //   setCurrentCategory(category);
 
-    if (category === "all") {
-      setCurrentDonuts(donuts);
-      return;
-    }
+  //   if (category === "all") {
+  //     setCurrentDonuts(donuts);
+  //     return;
+  //   }
 
-    let categoryDonuts = allDonuts.filter(
-      (donut) => donut.category === category
-    );
-    // let categoryDonuts = donuts.filter((donut) =>
-    //   donut.categories.includes(category)
-    // );
+  //   let categoryDonuts = allDonuts.filter(
+  //     (donut) => donut.category === category
+  //   );
+  //   // let categoryDonuts = donuts.filter((donut) =>
+  //   //   donut.categories.includes(category)
+  //   // );
 
-    setCurrentDonuts(categoryDonuts);
-  };
+  //   setCurrentDonuts(categoryDonuts);
+  // };
 
   const { isLoading, error, data } = useQuery(
     "donutData",
@@ -151,7 +150,6 @@ export default function DonutList() {
         let donutData = await data.json();
 
         setAllDonuts(donutData);
-        setCurrentDonuts(donutData);
       },
     }
   );
@@ -161,7 +159,7 @@ export default function DonutList() {
       <ul className="flex flex-wrap px-4 justify-center gap-10 pb-4 text-primary font-extrabold text-lg uppercase">
         {categories.map((category) => (
           <li
-            onClick={() => setCategory(category)}
+            onClick={() => setCurrentCategory(category)}
             className={`cursor-pointer select-none transition-all duration-500 hover:text-red-700 ${
               currentCategory === category ? "text-red-700 underline" : ""
             }`}
@@ -182,18 +180,23 @@ export default function DonutList() {
       {error && <div>Sorry, an error has occurred. Please try again.</div>}
       {data && (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-10 text-center gap-3 md:gap-10">
-          {currentDonuts.map((donut) => (
-            <div key={donut.donutid}>
-              <img
-                src={donut.image}
-                alt={donut.name}
-                className="rounded-lg mb-2 transition-all duration-500 transform hover:scale-105"
-              />
-              <h1 className="text-primary font-bold uppercase text-xl">
-                {donut.name}
-              </h1>
-            </div>
-          ))}
+          {allDonuts
+            .filter(
+              (donut) =>
+                donut.category === currentCategory || currentCategory === "all"
+            )
+            .map((donut) => (
+              <div key={donut.donutid}>
+                <img
+                  src={donut.image}
+                  alt={donut.name}
+                  className="rounded-lg mb-2 transition-all duration-500 transform hover:scale-105"
+                />
+                <h1 className="text-primary font-bold uppercase text-xl">
+                  {donut.name}
+                </h1>
+              </div>
+            ))}
         </div>
       )}
     </div>
