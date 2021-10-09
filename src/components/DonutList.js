@@ -179,7 +179,7 @@ export default function DonutList() {
           <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-primary"></div>
         </div>
       )}
-      {error && <div>Sorry, something has happened. Please try again.</div>}
+      {error && <div>Sorry, an error has occurred. Please try again.</div>}
       {data && (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-10 text-center gap-3 md:gap-10">
           {currentDonuts.map((donut) => (
