@@ -181,7 +181,7 @@ export default function DonutList() {
       )}
       {error && <div>Sorry, something has happened. Please try again</div>}
       {data && (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-10 text-center gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-10 text-center gap-3 md:gap-10">
           {currentDonuts.map((donut) => (
             <div key={donut.donutid}>
               <img
