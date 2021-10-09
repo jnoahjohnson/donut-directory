@@ -12,6 +12,7 @@
     "prettier": "^2.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-query": "^3.25.1",
     "react-scripts": "4.0.3",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "web-vitals": "^1.0.1"
@@ -19,6 +20,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
+    "deploy": "aws s3 sync build/ s3://donut-directory --acl public-read",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
