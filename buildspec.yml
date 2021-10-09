@@ -1,9 +1,11 @@
 version: 0.1
 phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+
   pre_build:
     commands:
-      - echo Updating npm...
-      - npm update -g npm
       - echo Installing source NPM dependencies...
       - npm install
   build:
