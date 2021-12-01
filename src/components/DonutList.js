@@ -131,6 +131,8 @@ export default function DonutList() {
       onSuccess: async (data) => {
         let donutData = await data.json();
 
+        console.log(donutData);
+
         setAllDonuts(donutData);
       },
     }
@@ -165,17 +167,18 @@ export default function DonutList() {
           {allDonuts
             .filter(
               (donut) =>
-                donut.category === currentCategory || currentCategory === "all"
+                donut.category.S === currentCategory ||
+                currentCategory === "all"
             )
             .map((donut) => (
-              <div key={donut.donutid}>
+              <div key={donut.donutid.S}>
                 <img
-                  src={donut.image}
-                  alt={donut.name}
+                  src={donut.image.S}
+                  alt={donut.name.S}
                   className="rounded-lg mb-2 transition-all duration-500 transform hover:scale-105"
                 />
                 <h1 className="text-primary font-bold uppercase text-xl">
-                  {donut.name}
+                  {donut.name.S}
                 </h1>
               </div>
             ))}
