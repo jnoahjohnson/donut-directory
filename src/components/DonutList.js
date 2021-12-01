@@ -124,27 +124,9 @@ export default function DonutList() {
   const [allDonuts, setAllDonuts] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("all");
 
-  // const setCategory = (category) => {
-  //   setCurrentCategory(category);
-
-  //   if (category === "all") {
-  //     setCurrentDonuts(donuts);
-  //     return;
-  //   }
-
-  //   let categoryDonuts = allDonuts.filter(
-  //     (donut) => donut.category === category
-  //   );
-  //   // let categoryDonuts = donuts.filter((donut) =>
-  //   //   donut.categories.includes(category)
-  //   // );
-
-  //   setCurrentDonuts(categoryDonuts);
-  // };
-
   const { isLoading, error, data } = useQuery(
     "donutData",
-    () => fetch("http://52.15.100.211:3000/"),
+    () => fetch("https://mmnfo31tri.execute-api.us-east-2.amazonaws.com/Prod"),
     {
       onSuccess: async (data) => {
         let donutData = await data.json();
