@@ -172,7 +172,7 @@ export default function DonutList() {
                 currentCategory === "all"
             )
             .map((donut) => (
-              <div key={donut.donutid.S}>
+              <div key={donut.id.S}>
                 <img
                   src={donut.image.S}
                   alt={donut.name.S}
