@@ -126,7 +126,8 @@ export default function DonutList() {
 
   const { isLoading, error, data } = useQuery(
     "donutData",
-    () => fetch("https://mmnfo31tri.execute-api.us-east-2.amazonaws.com/Prod"),
+    () =>
+      fetch("https://8k8wq1oix5.execute-api.us-east-2.amazonaws.com/v0/donuts"),
     {
       onSuccess: async (data) => {
         let donutData = await data.json();
